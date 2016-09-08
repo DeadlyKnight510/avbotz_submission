@@ -1,0 +1,31 @@
+The differences between Pipes and Shared Memory!
+
+If the programs all talk to each other without a central form of communication, I would choose Shared Memory.
+
+
+Shared Memory is better when many programs need to send information to each other like in this case. 2 or more programs share memory and communicate using that memory. This saves resources as one central area is used, instead of many files. 
+
+Though it is more useful in our situation, it is harder to debug. This is important because there will definitely be some error when we are getting it to work. 
+
+
+Advantages
+1. Better between many programs
+2. 2 or more programs share memory to communicate
+3. saves resources
+4. Easy to check for updates once in a while (not good for quickly transmitting info)
+
+Disadvantages
+1. Harder to Debug and make sure it works
+2. have to know when data has been changed / added
+3. more work
+
+
+
+
+Pipes
+Advantages
+1. simple to use
+2. thread safe function (mkfifo)
+3. OS handles more
+
+Pipes are easier to work with, as it is a direct form of communication between two programs. 
