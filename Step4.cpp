@@ -5,19 +5,18 @@
 using namespace std;
 
 //base time values
-//overwritten when user inputs
-double a[] = {0.0, 3.985145*pow(10,-4), 7.07023*pow(10,-4)};
-double b[] = {3.464551*pow(10,-4), 7.449696*pow(10,-4),2.63474*pow(10,-4)};
-double c[] = {7.548954*pow(10,-4),0.0,0.0};
+double a[] = {0.0, 			3.985145*pow(10,-4), 	7.07023*pow(10,-4)};
+double b[] = {3.464551*pow(10,-4),	7.449696*pow(10,-4),	2.63474*pow(10,-4)};
+double c[] = {7.548954*pow(10,-4),	0.0,			0.0		  };
 
 //the value of a,b and c that I choose
-int i=1;
+int i=0;
 
 //speed of propogation underwater
 double s=1481;
 
 //iteration times - basically farthest distance in the horizontal direction of pinger
-int iter=10;
+int iter=100;
 
 bool found=false;
 //these were for personal use - not used in code
@@ -45,11 +44,9 @@ double solvex(double y, double x)
 double solvex_opp(double y, double x)
 {
 	/* 	
-	this function takes the y value from the next function, and puts it into this equation.
-	The X value is inputted ( same as the x value for solvey() ) and therefore doesn't 
-	leave any variables left. I made this function from points B and C. This function outputs the X value.
+	This one solves it for the other side (negative values)
 	*/
-	return sqrt((x+0.5)*(x+0.5)+y*y)-sqrt(x*x+(y-1)*(y-1))-abs(c-b)*s;
+	return sqrt(x*x+(y-1)*(y-1))-sqrt((x+0.5)*(x+0.5)+y*y)-abs(c[i]-b[i])*s;
 }
 double solvey(double x)
 {
@@ -63,21 +60,8 @@ double solvey(double x)
 }
 int main()
 {
-	//Get values from user
-/*	cout << "Enter times with only values.\ne.g. 0.000263474\n";
-	cout << "Enter time for a: ";
-	cin >> a;
-	cout << "Enter time for b: ";
-	cin >> b;
-	cout << "Enter time for c: ";
-	cin >> c;
-	cout << "Enter max iteration value (In Meters): ";
-	cin >> iter;
-	*/
 	//if statements choose which direction sound is coming from
 	// and iterate in a loop in that direction
-
-	cout << solvex_opp(-5.001,3)<<endl;
 	
 	if(b[i]<a[i])
 	{
